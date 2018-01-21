@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Queue Details</title>
+<style type="text/css">
+div {
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+	<h1>Provide Publisher Details</h1>
+	<form action="/processOrder" method="POST"
+		enctype="multipart/form-data">
+
+		<div>
+			<label> Broker URL : </label><input type="text" name="broker" />
+
+		</div>
+		<div>
+			<label> Username : </label><input type="text" name="username" />
+
+		</div>
+		<div>
+			<label> Password: </label><input type="password" name="password" />
+
+		</div>
+		<div>
+			<label> Destination Queue: </label><input type="text"
+				name="destination" />
+
+		</div>
+		<div>
+			<label> Destination Type: </label> <label> Queue </label> <input
+				type="checkbox" name="queuetype" value="queue" checked="checked" />	
+
+			<label> Topic </label><input type="checkbox" name="queuetype"
+				value="topic" />
+
+		</div>
+		<div>
+			<label> Upload an Order file: </label><input type="file" name="file" />
+		</div>
+		<div>
+			<label> </label><input type="submit" value="Order" />
+
+		</div>
+	</form>
+</body>
+</html>
