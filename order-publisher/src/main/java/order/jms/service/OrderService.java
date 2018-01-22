@@ -46,11 +46,21 @@ public class OrderService {
 	@Autowired
 	XMLConverter converter;
 
+	/** The method is used to process Orders uploaded by users in XML
+	 * @param file
+	 * @param queuedetails
+	 * @return
+	 * @throws IOException
+	 */
 	public boolean processOrder(MultipartFile file, QueueDetails queuedetails) throws IOException {
-
+		//1. save the file uploaded by user
 		if (uploadOrderFile(file)) {
+			
+		//2. deserialize the order objects from xml files	
 			List<Order> orders = converter.readOrders();
+			
 			LOG.info("Orders received to publish: {}", orders);
+		//3. publish Order objects one by one on the JMS queue	
 			if (publishOrder(orders, queuedetails)) {
 				return true;
 			} else {
